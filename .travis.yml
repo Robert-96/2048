@@ -1,0 +1,22 @@
+language: node_js
+
+dist: trusty
+
+branches:
+  only:
+    - master
+
+script:
+  - npm run lint:js
+  - npm test
+  - npm run build
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  on:
+    branch: master
+  local-dir: dist
+  verbose: true

@@ -1,0 +1,108 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.top-z-index {
+  z-index: 131072;
+}
+
+.font-size-big {
+  font-size: 8vmin;
+}
+
+.font-size-medium {
+  font-size: 7vmin;
+}
+
+.font-size-small {
+  font-size: 5.5vmin;
+}
+
+.font-size-extra-small {
+  font-size: 4.5vmin;
+}
+
+.glow-yellow-500 {
+  box-shadow: 0 0 10px theme('colors.yellow.400');
+}
+
+.glow-yellow-600 {
+  box-shadow: 0 0 10px theme('colors.yellow.500');
+}
+
+.glow-orange-500 {
+  box-shadow: 0 0 10px theme('colors.orange.400');
+}
+
+.glow-orange-600 {
+  box-shadow: 0 0 10px theme('colors.orange.500');
+}
+
+.glow-red-500 {
+  box-shadow: 0 0 10px theme('colors.red.400');
+}
+
+.glow-red-600 {
+  box-shadow: 0 0 10px theme('colors.red.500');
+}
+
+.glow-red-700 {
+  box-shadow: 0 0 10px theme('colors.red.600');
+}
+
+@keyframes scale-animation {
+  0%   { transform: scale(1, 1); }
+  50%  { transform: scale(1.1, 1.1); }
+  100% { transform: scale(1, 1); }
+}
+
+.scale-animation {
+  animation-name: scale-animation;
+  animation-delay: 100ms;
+  animation-duration: 100ms;
+  animation-iteration-count: 1;
+}
+
+
+#container {
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.grid-width {
+  width: calc(4 * 18vmin + 6 * 0.75vmin);
+}
+
+#grid {
+  padding: 0.75vmin;
+}
+
+.grid-cell {
+  width: 18vmin;
+  height: 18vmin;
+
+  margin: 0.75vmin;
+}
+
+.grid-tile {
+  position: absolute;
+
+  top: 0.75vmin;
+  left: 0.75vmin;
+
+  border-radius: 0.25rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 600;
+  user-select: none;
+
+  transition: 100ms ease-in-out;
+}
+
+#win-overlay,
+#game-over-overlay {
+  transition: 100ms ease-in-out;
+}

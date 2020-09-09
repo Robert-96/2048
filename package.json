@@ -7,7 +7,7 @@
     "test": "npx jest --verbose",
     "test:coverage": "npx jest --verbose --coverage",
     "lint": "npx eslint src",
-    "build": "npx webpack --config webpack.prod.js",
+    "build": "npx webpack --env.NODE_ENV=production --config webpack.prod.js",
     "start": "npx webpack-dev-server --host 0.0.0.0 --open --config webpack.dev.js"
   },
   "keywords": [],

@@ -1,5 +1,7 @@
 # 2048
 
+[![Build Status](https://travis-ci.org/Robert-96/2048.svg?branch=master)](https://travis-ci.org/Robert-96/2048)
+
 2048 is played on a gray 4×4 grid, with numbered tiles that slide when a player moves them using the four arrow keys.
 
 [Play it here!](https://robert-96.github.io/2048)

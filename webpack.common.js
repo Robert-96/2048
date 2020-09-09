@@ -36,8 +36,13 @@ module.exports = {
       mode: 'webapp',
       devMode: 'webapp',
       favicons: {
-        appName: '2048',
-        appDescription: '2048 is a single-player sliding block puzzle game.',
+        appName: '2048 - a single-player sliding block puzzle game',
+        appShortName: '2048',
+        appDescription: '2048 is played on a gray 4×4 grid, with numbered tiles that slide when a player moves them using the four arrow keys.',
+        theme_color: '#2D3748',
+        orientation: 'portrait',
+        scope: '/2048/',
+        start_url: '/2048/'
       }
     })
   ],

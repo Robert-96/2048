@@ -22241,6 +22241,18 @@ video {
           animation: bounce 1s infinite;
 }
 
+:root {
+  --cell-size: 23.125vmin;
+  --cell-margin: 0.75vmin;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --cell-size: 18vmin;
+    --cell-margin: 0.75vmin;
+  }
+}
+
 .top-z-index {
   z-index: 131072;
 }
@@ -22328,23 +22340,23 @@ video {
 }
 
 .grid-width {
-  width: calc(4 * 18vmin + 6 * 0.75vmin);
+  width: calc(4 * var(--cell-size) + 6 * var(--cell-margin));
 }
 
 #grid {
-  padding: 0.75vmin;
+  padding: var(--cell-margin);
 }
 
 .grid-cell {
-  width: 18vmin;
-  height: 18vmin;
-  margin: 0.75vmin;
+  width: var(--cell-size);
+  height: var(--cell-size);
+  margin: var(--cell-margin);
 }
 
 .grid-tile {
   position: absolute;
-  top: 0.75vmin;
-  left: 0.75vmin;
+  top: var(--cell-margin);
+  left: var(--cell-margin);
   border-radius: 0.25rem;
   display: flex;
   justify-content: center;

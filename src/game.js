@@ -429,9 +429,6 @@ class Swipe {
 }
 
 class Renderer {
-  tileSize = 18;
-  tileUnit = 'vmin';
-
   commonClasses = ['grid-cell', 'grid-tile'];
   defaultClasses = ['bg-red-700', 'glow-red-700', 'font-size-extra-small'];
   classMaps = {
@@ -451,8 +448,20 @@ class Renderer {
     16384: ['bg-red-600', 'glow-red-600', 'font-size-extra-small'],
   };
 
+  computePosition(value, tileSize, tileMargin) {
+    return tileMargin + 2 * value * tileMargin + value * tileSize;
+  }
+
   position(value) {
-    return value * 2 * 0.75 + 0.75 + value * this.tileSize;
+    const body = getComputedStyle(document.body);
+
+    const tileSize = parseFloat(body.getPropertyValue('--cell-size'));
+    const tileMargin = parseFloat(body.getPropertyValue('--cell-margin'));
+
+    console.log(tileSize);
+    console.log(tileMargin);
+
+    return `${this.computePosition(value, tileSize, tileMargin)}vmin`;
   }
 
   top(tile) {
@@ -474,8 +483,8 @@ class Renderer {
 
     element.classList.add(...this.commonClasses, ...this.classes(tile));
 
-    element.style.top = `${this.top(tile)}${this.tileUnit}`;
-    element.style.left = `${this.left(tile)}${this.tileUnit}`;
+    element.style.top = this.top(tile);
+    element.style.left = this.left(tile);
 
     element.textContent = tile.value;
     element.style.zIndex = tile.value;
@@ -494,8 +503,8 @@ class Renderer {
     element.style.zIndex = tile.value;
     element.classList.add(...this.commonClasses, ...this.classes(tile))
 
-    element.style.top = `${this.top(tile)}${this.tileUnit}`;
-    element.style.left = `${this.left(tile)}${this.tileUnit}`;
+    element.style.top = this.top(tile);
+    element.style.left = this.left(tile);
 
     if (merged) {
       element.classList.remove('scale-animation');

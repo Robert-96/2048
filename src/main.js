@@ -9,7 +9,4 @@ import './css/style.css';
 const interactions = new Interactions();
 interactions.setUp();
 
-OfflinePluginRuntime.install({
-  onInstalled: () => { console.log(">>> APP READY.") },
-  onUpdateFailed: () => { console.log(">>> APP FAILED.") }
-});
+OfflinePluginRuntime.install();

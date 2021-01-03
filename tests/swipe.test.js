@@ -27,9 +27,13 @@ test('it should detect a up swipe', () => {
       }
     ]
   }
+  const endEvent = {
+    preventDefault: () => {},
+  }
 
   swipe.handelTouchStart(startEvent);
   swipe.handleTouchMove(moveEvent);
+  swipe.handleTouchEnd(endEvent);
 
   expect(swipe.onUp).mockToBeCalled();
 });
@@ -57,9 +61,13 @@ test('it should detect a down swipe', () => {
       }
     ]
   }
+  const endEvent = {
+    preventDefault: () => {},
+  }
 
   swipe.handelTouchStart(startEvent);
   swipe.handleTouchMove(moveEvent);
+  swipe.handleTouchEnd(endEvent);
 
   expect(swipe.onDown).mockToBeCalled();
 });
@@ -87,9 +95,13 @@ test('it should detect a left swipe', () => {
       }
     ]
   }
+  const endEvent = {
+    preventDefault: () => {},
+  }
 
   swipe.handelTouchStart(startEvent);
   swipe.handleTouchMove(moveEvent);
+  swipe.handleTouchEnd(endEvent);
 
   expect(swipe.onLeft).mockToBeCalled();
 });
@@ -117,9 +129,13 @@ test('it should detect a right swipe', () => {
       }
     ]
   }
+  const endEvent = {
+    preventDefault: () => {},
+  }
 
   swipe.handelTouchStart(startEvent);
   swipe.handleTouchMove(moveEvent);
+  swipe.handleTouchEnd(endEvent);
 
   expect(swipe.onRight).mockToBeCalled();
 });

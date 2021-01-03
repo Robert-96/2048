@@ -239,16 +239,16 @@ class Game {
     let positionFunction = null;
     let moveFunction = null;
 
-    if (direction === "up") {
+    if (direction === 'up') {
       positionFunction = (i, j) => { return { 'i': j, 'j': i } };
       moveFunction = (x, y, moves) => { return { 'x': x - moves, 'y': y } };
-    } else if (direction === "down") {
+    } else if (direction === 'down') {
       positionFunction = (i, j) => { return { 'i': 3 - j, 'j': i } };
       moveFunction = (x, y, moves) => { return { 'x': x + moves, 'y': y } };
-    } else if (direction === "left") {
+    } else if (direction === 'left') {
       positionFunction = (i, j) => { return { 'i': i, 'j': j } };
       moveFunction = (x, y, moves) => { return { 'x': x , 'y': y - moves } };
-    } else if (direction === "right") {
+    } else if (direction === 'right') {
       positionFunction = (i, j) => { return { 'i': i, 'j': 3 - j } };
       moveFunction = (x, y, moves) => { return { 'x': x , 'y': y + moves } };
     }
@@ -458,9 +458,6 @@ class Renderer {
     const tileSize = parseFloat(body.getPropertyValue('--cell-size'));
     const tileMargin = parseFloat(body.getPropertyValue('--cell-margin'));
 
-    console.log(tileSize);
-    console.log(tileMargin);
-
     return `${this.computePosition(value, tileSize, tileMargin)}vmin`;
   }
 
@@ -572,7 +569,7 @@ class Interactions {
 
   onScoreUpdate(score) {
     document.getElementById('score').textContent = score;
-    document.title = this.game.maxTile() + " | " + this.title;
+    document.title = this.game.maxTile() + ' | ' + this.title;
   }
 
   onBestUpdate(best) {
@@ -617,24 +614,24 @@ class Interactions {
     document.addEventListener('keydown', (event) => {
       event.preventDefault();
 
-      if (event.code === "ArrowUp" || event.code === "KeyW") {
-        this.game.move("up");
-      } else if (event.code === "ArrowDown" || event.code === "KeyS") {
-        this.game.move("down");
-      } else if (event.code === "ArrowLeft" || event.code === "KeyA") {
-        this.game.move("left");
-      } else if (event.code === "ArrowRight" || event.code === "KeyD") {
-        this.game.move("right");
+      if (event.code === 'ArrowUp' || event.code === 'KeyW') {
+        this.game.move('up');
+      } else if (event.code === 'ArrowDown' || event.code === 'KeyS') {
+        this.game.move('down');
+      } else if (event.code === 'ArrowLeft' || event.code === 'KeyA') {
+        this.game.move('left');
+      } else if (event.code === 'ArrowRight' || event.code === 'KeyD') {
+        this.game.move('right');
       }
     });
   }
 
   setUpSwipeEvent() {
     this.swipe = new Swipe({
-      'onUp': () => { this.game.move("up") },
-      'onDown': () => { this.game.move("down") },
-      'onLeft': () => { this.game.move("left") },
-      'onRight': () => { this.game.move("right") }
+      'onUp': () => { this.game.move('up') },
+      'onDown': () => { this.game.move('down') },
+      'onLeft': () => { this.game.move('left') },
+      'onRight': () => { this.game.move('right') }
     });
 
     this.swipe.setUp();

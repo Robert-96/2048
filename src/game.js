@@ -423,8 +423,8 @@ class Swipe {
   }
 
   setUp() {
-    document.addEventListener('touchstart', this.handelTouchStart.bind(this));
-    document.addEventListener('touchmove', this.handleTouchMove.bind(this));
+    document.addEventListener('touchstart', this.handelTouchStart.bind(this), { 'passive': false });
+    document.addEventListener('touchmove', this.handleTouchMove.bind(this), { 'passive': false });
   }
 }
 

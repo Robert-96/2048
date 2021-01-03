@@ -375,8 +375,13 @@ class Swipe {
   constructor(callbacks) {
     callbacks = defaultTo(callbacks, {});
 
+    this.swipeThreshold = 50;
+
     this.xDown = null;
     this.yDown = null;
+
+    this.xUp = null;
+    this.yUp = null;
 
     this.onUp = defaultTo(callbacks.onUp, () => {});
     this.onDown = defaultTo(callbacks.onDown, () => {});
@@ -398,33 +403,52 @@ class Swipe {
       return;
     }
 
-    const xUp = event.touches[0].clientX;
-    const yUp = event.touches[0].clientY;
+    this.xUp = event.touches[0].clientX;
+    this.yUp = event.touches[0].clientY;
+  }
 
-    const xDiff = this.xDown - xUp;
-    const yDiff = this.yDown - yUp;
+  handleTouchEnd(event) {
+    event.preventDefault();
+
+    if (!this.xDown || !this.yDown || !this.xUp || !this.yUp) {
+      return;
+    }
+
+    const xDiff = this.xDown - this.xUp;
+    const yDiff = this.yDown - this.yUp;
 
     if (Math.abs(xDiff) > Math.abs(yDiff)) {
-      if (xDiff > 0) {
-        this.onLeft();
-      } else {
-        this.onRight();
+      console.log('xDiff', xDiff)
+
+      if (Math.abs(xDiff) >= this.swipeThreshold) {
+        if (xDiff > 0) {
+          this.onLeft();
+        } else {
+          this.onRight();
+        }
       }
     } else {
-      if (yDiff > 0) {
-        this.onUp();
-      } else {
-        this.onDown();
+      console.log('yDiff', yDiff)
+
+      if (Math.abs(yDiff) >= this.swipeThreshold) {
+        if (yDiff > 0) {
+          this.onUp();
+        } else {
+          this.onDown();
+        }
       }
     }
 
     this.xDown = null;
     this.yDown = null;
+    this.xUp = null;
+    this.yUp = null;
   }
 
   setUp() {
     document.addEventListener('touchstart', this.handelTouchStart.bind(this), { 'passive': false });
     document.addEventListener('touchmove', this.handleTouchMove.bind(this), { 'passive': false });
+    document.addEventListener('touchend', this.handleTouchEnd.bind(this), { 'passive': false });
   }
 }
 
@@ -598,7 +622,7 @@ class Interactions {
 
       button.addEventListener('click', () => {
         game.reset();
-      })
+      });
     })
   }
 
@@ -607,7 +631,7 @@ class Interactions {
 
     button.addEventListener('click', () => {
       this.game.continue();
-    })
+    });
   }
 
   setUpKeyEvents() {

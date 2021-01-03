@@ -620,6 +620,10 @@ class Interactions {
     ids.forEach((id) => {
       const button = document.getElementById(id);
 
+      button.addEventListener('touchstart', () => {
+        game.reset();
+      });
+
       button.addEventListener('click', () => {
         game.reset();
       });
@@ -628,6 +632,10 @@ class Interactions {
 
   setUpKeepPlayingButton() {
     const button = document.getElementById('win-keep-playing');
+
+    button.addEventListener('touchstart', () => {
+      this.game.continue();
+    });
 
     button.addEventListener('click', () => {
       this.game.continue();

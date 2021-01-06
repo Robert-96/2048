@@ -159,3 +159,139 @@ test('it should not handel a swipe without a start', () => {
 
   expect(swipe.onRight).not.mockToBeCalled();
 });
+
+test('it should not handel a up swipe below the threshold', () => {
+  const swipe = new Swipe({
+    'onUp': jest.fn()
+  });
+
+  const startEvent = {
+    preventDefault: () => {},
+    touches: [
+      {
+        clientX: 1,
+        clientY: 20,
+      }
+    ]
+  }
+  const moveEvent = {
+    preventDefault: () => {},
+    touches: [
+      {
+        clientX: 1,
+        clientY: 1,
+      }
+    ]
+  }
+  const endEvent = {
+    preventDefault: () => {},
+  }
+
+  swipe.handelTouchStart(startEvent);
+  swipe.handleTouchMove(moveEvent);
+  swipe.handleTouchEnd(endEvent);
+
+  expect(swipe.onUp).not.mockToBeCalled();
+});
+
+test('it should not handel a down swipe below the threshold', () => {
+  const swipe = new Swipe({
+    'onDown': jest.fn()
+  });
+
+  const startEvent = {
+    preventDefault: () => {},
+    touches: [
+      {
+        clientX: 1,
+        clientY: 1,
+      }
+    ]
+  }
+  const moveEvent = {
+    preventDefault: () => {},
+    touches: [
+      {
+        clientX: 1,
+        clientY: 20,
+      }
+    ]
+  }
+  const endEvent = {
+    preventDefault: () => {},
+  }
+
+  swipe.handelTouchStart(startEvent);
+  swipe.handleTouchMove(moveEvent);
+  swipe.handleTouchEnd(endEvent);
+
+  expect(swipe.onDown).not.mockToBeCalled();
+});
+
+test('it should not handel a left swipe below the threshold', () => {
+  const swipe = new Swipe({
+    'onLeft': jest.fn()
+  });
+
+  const startEvent = {
+    preventDefault: () => {},
+    touches: [
+      {
+        clientX: 20,
+        clientY: 1,
+      }
+    ]
+  }
+  const moveEvent = {
+    preventDefault: () => {},
+    touches: [
+      {
+        clientX: 1,
+        clientY: 1,
+      }
+    ]
+  }
+  const endEvent = {
+    preventDefault: () => {},
+  }
+
+  swipe.handelTouchStart(startEvent);
+  swipe.handleTouchMove(moveEvent);
+  swipe.handleTouchEnd(endEvent);
+
+  expect(swipe.onLeft).not.mockToBeCalled();
+});
+
+test('it should not handel a right swipe below the threshold', () => {
+  const swipe = new Swipe({
+    'onRight': jest.fn()
+  });
+
+  const startEvent = {
+    preventDefault: () => {},
+    touches: [
+      {
+        clientX: 1,
+        clientY: 1,
+      }
+    ]
+  }
+  const moveEvent = {
+    preventDefault: () => {},
+    touches: [
+      {
+        clientX: 20,
+        clientY: 1,
+      }
+    ]
+  }
+  const endEvent = {
+    preventDefault: () => {},
+  }
+
+  swipe.handelTouchStart(startEvent);
+  swipe.handleTouchMove(moveEvent);
+  swipe.handleTouchEnd(endEvent);
+
+  expect(swipe.onRight).not.mockToBeCalled();
+});

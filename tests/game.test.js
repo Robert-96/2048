@@ -496,6 +496,7 @@ describe('Move', () => {
     expect(game.onMove).mockToBeCalled();
   });
 
+  jest.retryTimes(10);
   test('it should create a new tile', () => {
     const game = new Game();
     game.setUp();

@@ -418,8 +418,6 @@ class Swipe {
     const yDiff = this.yDown - this.yUp;
 
     if (Math.abs(xDiff) > Math.abs(yDiff)) {
-      console.log('xDiff', xDiff)
-
       if (Math.abs(xDiff) >= this.swipeThreshold) {
         if (xDiff > 0) {
           this.onLeft();
@@ -428,8 +426,6 @@ class Swipe {
         }
       }
     } else {
-      console.log('yDiff', yDiff)
-
       if (Math.abs(yDiff) >= this.swipeThreshold) {
         if (yDiff > 0) {
           this.onUp();
@@ -611,6 +607,8 @@ class Interactions {
   onReset() {
     this.hideWinOverlay();
     this.hideGameOverOverlay();
+
+    this.storage.save();
   }
 
   setUpNewGameButtons() {
@@ -654,6 +652,10 @@ class Interactions {
         this.game.move('left');
       } else if (event.code === 'ArrowRight' || event.code === 'KeyD') {
         this.game.move('right');
+      }
+
+      if (event.code === 'KeyR') {
+        this.game.reset();
       }
     });
   }
